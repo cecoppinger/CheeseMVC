@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["title"] = "Cheeses!";
+}
+
+<h1>My Cheeses</h1>
+
+<p><a asp-controller="Cheese" asp-action="Add">Add Cheese!</a></p>
+
+@if(ViewBag.cheeses.Count == 0)
+{
+    <p>No cheeses yet...</p>
+}
+
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+    </tr>
+    
+    @foreach (Cheese cheese in ViewBag.cheeses)
+    {
+        <tr>
+            <td>@cheese.Name</td>
+            <td>@cheese.Description</td>
+            <td><a asp-controller="Cheese" asp-action="Edit" asp-route-cheeseId="@cheese.CheeseId">Edit</a></td>
+        </tr>
+    }
+   
+</table>
